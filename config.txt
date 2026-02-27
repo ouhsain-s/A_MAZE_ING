@@ -1,0 +1,8 @@
+# Maze configuration example
+WIDTH=45
+HEIGHT=45
+ENTRY=0,0
+EXIT=42,42
+OUTPUT_FILE=maze_output.txt
+PERFECT=false
+SEED=96
