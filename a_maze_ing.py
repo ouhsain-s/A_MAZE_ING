@@ -31,7 +31,7 @@ def get_location(string_loc: str) -> tuple:
 
 def check_locations_within_eria(location: tuple, wigth: int,
                                 height: int) -> bool:
-    if 0 <= location[0] < wigth and 0 <= location[1] < height:
+    if 0 <= location[0] < height and 0 <= location[1] < wigth:
         return (True)
     return (False)
 
@@ -49,8 +49,6 @@ def main():
         output_file = configs["OUTPUT_FILE"]
         perfect = (configs.get("PERFECT", "true").lower() == "true")
         seed = int(configs["SEED"]) if "SEED" in configs else None
-        # if seed is not None:
-        #     random.seed(seed)
 
         if not check_locations_within_eria(entry, wigth, height):
             print("ENTRY point is outsid of the maze")

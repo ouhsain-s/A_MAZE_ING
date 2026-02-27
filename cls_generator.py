@@ -1,8 +1,7 @@
 import random
 import sys
 from collections import deque
-from time import sleep
-sys.setrecursionlimit(5000999)
+sys.setrecursionlimit(5000)
 
 
 class MazeGenerator:
@@ -15,6 +14,7 @@ class MazeGenerator:
         self.output_file = output_file
         self.perfect = perfect
         self.forvidden_coordinates = [()]
+        self.seed = seed
         if seed is not None:
             random.seed(seed)
         self.maze = [[15 for _ in range(width)] for _ in range(height)]
@@ -87,41 +87,6 @@ class MazeGenerator:
         self.forvidden_coordinates = coords
         return True
 
-    # def re_initialize_for_print(self) -> None:
-    #     start_x = self.height - 5
-    #     start_y = self.width - 7
-    #     if start_x < 2 or start_y < 2:
-    #         return False
-    #     start_x //= 2
-    #     start_y //= 2
-
-    #     # alocate 4 in 7 blocks
-
-    #     self.maze[start_x][start_y] = 15
-    #     self.maze[start_x + 1][start_y] = 15
-    #     self.maze[start_x + 2][start_y] = 15
-
-    #     self.maze[start_x + 2][start_y + 1] = 15
-    #     self.maze[start_x + 2][start_y + 2] = 15
-    #     self.maze[start_x + 3][start_y + 2] = 15
-    #     self.maze[start_x + 4][start_y + 2] = 15
-
-    #     # alocate 2 in 11 blocks
-
-    #     self.maze[start_x][start_y + 4] = 15
-    #     self.maze[start_x][start_y + 5] = 15
-    #     self.maze[start_x][start_y + 6] = 15
-    #     self.maze[start_x + 1][start_y + 6] = 15
-    #     self.maze[start_x + 2][start_y + 4] = 15
-    #     self.maze[start_x + 2][start_y + 5] = 15
-    #     self.maze[start_x + 2][start_y + 6] = 15
-    #     self.maze[start_x + 3][start_y + 4] = 15
-    #     self.maze[start_x + 4][start_y + 4] = 15
-    #     self.maze[start_x + 4][start_y + 5] = 15
-    #     self.maze[start_x + 4][start_y + 6] = 15
-
-    #     add opposit walls  
-
     def create_other_paths(self):
         for _ in range(self.width + self.height):
             d = random.choice([self.N, self.W, self.E, self.S])
@@ -143,10 +108,12 @@ class MazeGenerator:
                     ~(1 << self.oposite[d])
 
     def generate_maze(self) -> None:
+        if self.seed is not None:
+            random.seed(self.seed)
         visited = [[False for _ in
                     range(self.width)] for _ in range(self.height)]
         if not self.allocate_irea_for_print(visited):
-            # message will be hear
+            print("WORNING: the size of maze not enough for dicplai 42")
             pass
 
         def creat_path(x: int, y: int):
@@ -174,6 +141,7 @@ class MazeGenerator:
     def re_import_with_new_maze(self):
         self.maze = [[15 for _ in range(self.width)]
                      for _ in range(self.height)]
+        
         self.generate_maze()
         self.import_maze()
 

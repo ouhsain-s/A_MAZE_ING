@@ -256,6 +256,7 @@ def show_menu(maze) -> None:
     except Exception as e:
         print(e)
 
+
 def to_start(maze):
     clear_terminal()
     loading(0.3, "ascii-art.txt")
