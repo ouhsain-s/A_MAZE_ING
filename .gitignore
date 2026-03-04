@@ -4,9 +4,7 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Environment
 .env
 venv/
 
-# IDE
 .idea/
