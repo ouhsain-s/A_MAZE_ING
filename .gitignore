@@ -3,7 +3,10 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.env
-.env/
+
+# Environment
+.env
 venv/
+
+# IDE
 .idea/
