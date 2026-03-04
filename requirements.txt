@@ -1,0 +1,9 @@
+setuptools>=61.0
+wheel>=0.41.2
+build
+
+flake8>=6.0.0
+mypy>=1.5.0
+
+pygame>=2.5.0
+matplotlib>=3.8.0

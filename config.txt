@@ -1,8 +1,9 @@
 # Maze configuration example
-WIDTH=30
-HEIGHT=20
+WIDTH=70
+HEIGHT=30
 ENTRY=0,0
-EXIT=19,29
+EXIT=29,69
 OUTPUT_FILE=maze_output.txt
 PERFECT=false
-#SEED=96
+#SEED=42
+ALGO=primes
